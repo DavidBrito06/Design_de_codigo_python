@@ -9,4 +9,5 @@ class MockRequest:
 def test_calculate():
     mock_request = MockRequest({"numbers": [1, 2, 3]})
     calculator_2 = Calculator2()
-    calculator_2.calculate(mock_request)
+    format_response =calculator_2.calculate(mock_request)
+    print(format_response)
