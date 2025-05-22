@@ -1,8 +1,11 @@
 from flask import request as FlaskRequest
 from typing import Dict, List
-from src.drivers.numpy_handler import NumpyHandler
+from src.drivers.interfaces.driver_hander_interface import DriverHandlerInterface
 
 class Calculator2:
+    def __init__(self,driver_handler: DriverHandlerInterface) -> None:
+        self.__driver_handler = driver_handler
+
     def calculate(self, request: FlaskRequest) -> Dict:#type: ignore[no-untyped-def]
         body = request.json
         input_data = self.__validate_body(body)
@@ -23,10 +26,10 @@ class Calculator2:
     
     def __process_data(self, input_data: List[float]) -> float:
         # Example processing: sum of numbers
-        numpy_handler = NumpyHandler()
-        first_process_result  = [(num *11) ** 0.95 for num in input_data]
     
-        result =numpy_handler.standard_derivation(first_process_result)
+        first_process_result  = [(num *11) ** 0.95 for num in input_data]
+
+        result =self.__driver_handler.standard_derivation(first_process_result)
 
         return 1/result
     
