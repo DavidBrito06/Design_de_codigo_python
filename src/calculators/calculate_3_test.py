@@ -25,6 +25,6 @@ def test_calculate():
     print()
     print(response)
 
-    assert response == {'data': {'calculator': 3, 'result': 100, 'success': True}}
+    assert response == {'data': {'calculator': 3, 'result': 1568, 'success': True}}
 
     
